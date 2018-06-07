@@ -1,0 +1,145 @@
+form
+{
+    margin-left: 17%;
+}
+
+button[type="submit"]
+{
+    border-radius: 1px;
+    background-color: black;
+    border: 1px solid black;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+button[type="submit"]:hover
+{
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+}
+
+input[type="text"], input[type="email"], .input-group-addon
+{
+    border: none;
+    background-color: white;
+    box-shadow:none;
+    border-radius: 1px;
+    border-bottom: 1px solid black;
+}
+
+input[type="text"]:focus, input[type="email"]:hover
+{
+    box-shadow:none;
+    border-bottom: 1px solid black;
+}
+
+nav.lastTopics
+{
+    margin-left: 15%;
+    margin-bottom: 2%;
+    width: 70%;
+    height: 430px;
+}
+
+nav.lastTopics div.larger
+{
+    float: left;
+    height: 100%;
+}
+
+nav.lastTopics div.smallest1
+{
+    float: right;
+    height: 48%;
+}
+
+nav.lastTopics div.smallest2
+{
+    float: right;
+    margin-top: 16px;
+    height: 48%;
+}
+
+nav.lastTopics div.larger, nav.lastTopics div.smallest1, nav.lastTopics div.smallest2
+{
+    width: 49%;
+    transition: all .3s ease-in-out;
+    background-position: center;
+    background-size: cover;
+}
+
+nav.lastTopics div.smallest1 h1, nav.lastTopics div.smallest2 h1, nav.lastTopics div.larger h1
+{
+    color: white;
+    font-size: 22px;
+    margin-top: 2%;
+    margin-left: 3%;
+    font-weight: bold;
+}
+
+nav.lastTopics div.larger:hover, nav.lastTopics div.smallest1:hover, nav.lastTopics div.smallest2:hover
+{
+    opacity: 0.95;
+    transform: scale(0.98);
+}
+
+nav.lastNews
+{
+    margin-left: 15%;
+    padding-bottom: 10%;
+}
+
+nav ul.lastNews
+{
+    margin-left: 34%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+nav ul li.lastNews
+{
+    width: 120%;
+    height: 50px;
+    margin-bottom: 5%;
+    border-top: 4px solid #404040;
+    text-align: center;
+    -webkit-transition-duration: 1s;
+}
+
+nav ul li.lastNews p
+{
+    -webkit-transition-duration: 1s;
+    margin-top: 3%;
+    color: #404040;
+    height: 100%;
+    width: 100%;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+div.gallery {
+    margin: 5px;
+    float: left;
+    width: 20%;
+    transition: all .3s ease-in-out;
+}
+
+div.gallery:hover {
+    transform: scale(0.98);
+}
+
+div.gallery img {
+    width: 100%;
+    height: 130px;
+}
+
+div.desc {
+    padding: 10px;
+    font-family: Arial;
+    text-align: center;
+    font-weight: bold;
+    color: #404040;
+}
