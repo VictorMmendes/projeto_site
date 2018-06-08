@@ -1,11 +1,11 @@
 form
 {
-    margin-left: 17%;
+    margin-left: 15%;
 }
 
 button[type="submit"]
 {
-    border-radius: 1px;
+    border-radius: 1%;
     background-color: black;
     border: 1px solid black;
     -webkit-transition-duration: 0.4s;
@@ -14,9 +14,9 @@ button[type="submit"]
 
 button[type="submit"]:hover
 {
-    background-color: white;
-    border: 1px solid black;
-    color: black;
+    background-color: #2eb82e;
+    font-weight: bold;
+    border: 1px solid white;
 }
 
 input[type="text"], input[type="email"], .input-group-addon
@@ -24,7 +24,7 @@ input[type="text"], input[type="email"], .input-group-addon
     border: none;
     background-color: white;
     box-shadow:none;
-    border-radius: 1px;
+    border-radius: 1%;
     border-bottom: 1px solid black;
 }
 
@@ -57,7 +57,7 @@ nav.lastTopics div.smallest1
 nav.lastTopics div.smallest2
 {
     float: right;
-    margin-top: 16px;
+    margin-top: 1.5%;
     height: 48%;
 }
 
@@ -72,7 +72,7 @@ nav.lastTopics div.larger, nav.lastTopics div.smallest1, nav.lastTopics div.smal
 nav.lastTopics div.smallest1 h1, nav.lastTopics div.smallest2 h1, nav.lastTopics div.larger h1
 {
     color: white;
-    font-size: 22px;
+    font-size: 155%;
     margin-top: 2%;
     margin-left: 3%;
     font-weight: bold;
@@ -86,23 +86,20 @@ nav.lastTopics div.larger:hover, nav.lastTopics div.smallest1:hover, nav.lastTop
 
 nav.lastNews
 {
-    margin-left: 15%;
+    margin-left: 15.5%;
+    width: 70%;
+    height: 570px;
     padding-bottom: 10%;
 }
 
 nav ul.lastNews
 {
-    margin-left: 34%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    margin-left: 41%;
 }
 
 nav ul li.lastNews
 {
-    width: 120%;
-    height: 50px;
+    width: 100%;
     margin-bottom: 5%;
     border-top: 4px solid #404040;
     text-align: center;
@@ -117,13 +114,13 @@ nav ul li.lastNews p
     height: 100%;
     width: 100%;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 150%;
 }
 
 div.gallery {
-    margin: 5px;
+    margin: 0.4%;
     float: left;
-    width: 20%;
+    width: 32%;
     transition: all .3s ease-in-out;
 }
 
@@ -133,11 +130,35 @@ div.gallery:hover {
 
 div.gallery img {
     width: 100%;
-    height: 130px;
+    height: 160%;
 }
 
 div.desc {
-    padding: 10px;
+    padding: 4%;
+    font-family: Arial;
+    text-align: center;
+    font-weight: bold;
+    color: #404040;
+}
+
+div.gallery2 {
+    margin: 0.4%;
+    float: left;
+    width: 23.8%;
+    transition: all .3s ease-in-out;
+}
+
+div.gallery2:hover {
+    transform: scale(0.98);
+}
+
+div.gallery2 img {
+    width: 100%;
+    height: 160%;
+}
+
+div.desc2 {
+    padding: 4%;
     font-family: Arial;
     text-align: center;
     font-weight: bold;

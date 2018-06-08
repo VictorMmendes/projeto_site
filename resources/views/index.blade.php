@@ -79,7 +79,7 @@
 
             <div class="page-header float-up">
 
-                <div class="page-header">
+                <div class="page-header lastTopics">
                     @yield('cabecalho')
                 </div>
 
