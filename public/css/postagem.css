@@ -1,0 +1,45 @@
+nav.postagem
+{
+    margin-top: -4%;
+    width: 102%;
+    margin-left: -1%;
+}
+
+div.postagem
+{
+    overflow: auto;
+    height: 550px;
+    width: 100%;
+    background-position: center top;
+    background-size: cover;
+}
+
+div.postagem h2
+{
+    font-size: 135%;
+    margin-top: 23%;
+}
+
+div.postagem h1
+{
+    font-size: 260%;
+    font-weight: bold;
+}
+
+div.postagem h3
+{
+    overflow: auto;
+    font-size: 120%;
+}
+
+div.postagem h2, div.postagem h1, div.postagem h3
+{
+    color: white;
+    margin-left: 20%;
+}
+
+span.time
+{
+    font-size: 100%;
+    margin-right: 0.5%;
+}

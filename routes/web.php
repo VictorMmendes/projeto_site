@@ -11,6 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('main');
-});
+Route::get('/', 'PostagemController@listar');
+Route::get('/postagem/{id}', 'PostagemController@showPostagem');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

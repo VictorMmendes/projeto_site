@@ -65,7 +65,7 @@
                 <p></p>
             </li>
               <li>
-                  <a href="#"><p>Home</p></a>
+                  <a href="{{ action('PostagemController@listar') }}"><p>Home</p></a>
               </li>
               <li>
                   <a href="#"><p>Trending</p></a>
