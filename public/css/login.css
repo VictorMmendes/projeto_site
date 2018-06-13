@@ -1,0 +1,62 @@
+form
+{
+    margin-left: 34%;
+    width: 100%;
+    padding: 3%;
+    margin-bottom: -5%;
+}
+
+button[type="submit"]
+{
+    border-radius: 1%;
+    background-color: black;
+    border: 1px solid black;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+button[type="submit"]:hover
+{
+    background-color: #2eb82e;
+    font-weight: bold;
+    border: 1px solid white;
+}
+
+.row
+{
+    margin-bottom: 1%;
+}
+
+input[type="password"], input[type="email"], input[type="text"], .input-group-addon
+{
+    border: none;
+    background-color: white;
+    box-shadow:none;
+    border-radius: 1%;
+    border-bottom: 1px solid black;
+}
+
+h3.loginLb
+{
+    margin-left: 11%;
+    margin-top: -3%;
+    margin-bottom: 2%;
+    color: #404040;
+}
+
+input[type="password"]:focus, input[type="email"]:focus, input[type="text"]:focus
+{
+    box-shadow:none;
+    border-bottom: 1px solid black;
+}
+
+label
+{
+    font-weight: normal;
+    margin-bottom: 8%;
+}
+
+.events div
+{
+    margin-top: -0.7%;
+}

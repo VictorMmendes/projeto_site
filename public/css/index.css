@@ -52,6 +52,51 @@ h3.getInTouch
     color: #404040;
 }
 
+.mainDiv h3 ul
+{
+    margin-left: 84%;
+    margin-top: -6%;
+}
+
+.auth a
+{
+    font-size: 65%;
+    font-weight: bold;
+    margin: -5%;
+    color: white;
+}
+
+.dropdown {
+    width: 100%;
+    font-size: 70%;
+    font-weight: bold;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: black;
+    box-shadow: 0px 8px 16px 0px #56d556;
+    border-radius: 5px;
+    padding: 5px 35px;
+    font-size: 130%;
+}
+
+.dropdown-content li a
+{
+    color: white;
+}
+
+.dropdown-content li a:hover
+{
+    text-decoration: none;
+    color: #56d556;
+}
+
 .opac
 {
     opacity: 0.5;

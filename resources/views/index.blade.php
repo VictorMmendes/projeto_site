@@ -57,6 +57,40 @@
                 <h3>
                     <strong class="opac">TEC</strong><strong>GAMES</strong>
                     <img class="icone" src="{{ url('/img/gamepad.png') }}">
+                    <ul class="nav navbar-nav auth">
+                        @guest
+                            <li>
+                                <a href="{{ route('login') }}">
+                                    Login <span class="glyphicon glyphicon-user"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('register') }}">
+                                    Register <span class="glyphicon glyphicon-plus-sign"></span>
+                                </a>
+                            </li>
+                        @else
+                            <div class="nav navbar-nav dropdown" style="margin-right: 40%">
+                                <span style="color: white" class="dropdown-toggle">
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-content">
+                                    <li>
+                                        <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            Logout
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+                                </div>
+                            </div>
+                        @endguest
+                    </ul>
                 </h3>
             </div>
           <div class="container-fluid mainDiv">

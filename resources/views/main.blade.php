@@ -51,7 +51,6 @@
 </nav>
 <form action="" method="POST">
     <input type ="hidden" name="_token" value="{{{ csrf_token() }}}">
-    <input type ="hidden" name="cadastrar" value="C">
     <h3 class="getInTouch">Newsletter</h3>
 
     <div class="row">
