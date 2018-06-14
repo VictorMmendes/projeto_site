@@ -52,10 +52,10 @@ h3.getInTouch
     color: #404040;
 }
 
-.mainDiv h3 ul
+.mainDiv h3 ul, .mainDiv h3 .dropdown
 {
-    margin-left: 84%;
-    margin-top: -6%;
+    position: relative;
+    float: right;
 }
 
 .auth a
