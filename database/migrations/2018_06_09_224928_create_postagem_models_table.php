@@ -22,6 +22,7 @@ class CreatePostagemModelsTable extends Migration
             $table->string('txt2');
             $table->string('produto_rel_url');
             $table->datetime('publish_date');
+            $table->string('genero');
             $table->timestamps();
         });
     }
