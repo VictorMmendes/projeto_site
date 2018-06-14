@@ -1,13 +1,13 @@
 nav.postagem
 {
-    margin-top: -4%;
+    margin-top: -3.3%;
     width: 102%;
     margin-left: -1%;
 }
 
 div.postagem
 {
-    overflow: auto;
+    overflow: hidden;
     height: 550px;
     width: 100%;
     background-position: center top;
@@ -17,7 +17,7 @@ div.postagem
 div.postagem h2
 {
     font-size: 135%;
-    margin-top: 23%;
+    margin-top: 20%;
 }
 
 div.postagem h1
@@ -28,7 +28,7 @@ div.postagem h1
 
 div.postagem h3
 {
-    overflow: auto;
+    overflow: hidden;
     font-size: 120%;
 }
 
