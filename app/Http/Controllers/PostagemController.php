@@ -76,7 +76,7 @@ class PostagemController extends Controller
             $img2 = "";
             $txt1 = "";
             $txt2 = "";
-            $produto_rel_url = "";
+            // $produto_rel_url = "";
             $genero = "";
 
             while(!feof($fp))
@@ -85,10 +85,81 @@ class PostagemController extends Controller
 
                 if(!empty($linha))
                 {
-                    
+                    if($linha == "@titulo\n")
+                    {
+                        $linha = utf8_decode(fgets($fp));
+                        while($linha[0] != "@")
+                        {
+                            $titulo .= $linha;
+                            $linha = utf8_decode(fgets($fp));
+                            if(empty($linha)) break;
+                        }
+                    }
+
+                    if($linha == "@img1\n")
+                    {
+                        $linha = utf8_decode(fgets($fp));
+                        while($linha[0] != "@")
+                        {
+                            $img1 .= $linha;
+                            $linha = utf8_decode(fgets($fp));
+                            if(empty($linha)) break;
+                        }
+                    }
+
+                    if($linha == "@img2\n")
+                    {
+                        $linha = utf8_decode(fgets($fp));
+                        while($linha[0] != "@")
+                        {
+                            $img2 .= $linha;
+                            $linha = utf8_decode(fgets($fp));
+                            if(empty($linha)) break;
+                        }
+                    }
+
+                    if($linha == "@txt1\n")
+                    {
+                        $linha = utf8_decode(fgets($fp));
+                        while($linha[0] != "@")
+                        {
+                            $txt1 .= $linha;
+                            $linha = utf8_decode(fgets($fp));
+                            if(empty($linha)) break;
+                        }
+                    }
+
+                    if($linha == "@txt2\n")
+                    {
+                        $linha = utf8_decode(fgets($fp));
+                        while($linha[0] != "@")
+                        {
+                            $txt2 .= $linha;
+                            $linha = utf8_decode(fgets($fp));
+                            if(empty($linha)) break;
+                        }
+                    }
+
+                    if($linha == "@genero\n")
+                    {
+                        $linha = utf8_decode(fgets($fp));
+                        while($linha[0] != "@")
+                        {
+                            $genero .= $linha;
+                            $linha = utf8_decode(fgets($fp));
+                            if(empty($linha)) break;
+                        }
+                    }
                 }
             }
         }
+
+        echo $titulo . "\n";
+        echo $img1 . "\n";
+        echo $img2 . "\n";
+        echo $txt1 . "\n";
+        echo $txt2 . "\n";
+        echo $genero . "\n";
 
         // foreach ($checks as $ck)
         // {
@@ -102,9 +173,26 @@ class PostagemController extends Controller
         // Importação Finalizada com Sucesso
         // $msg = "E-mails enviados com sucesso";
 
-        return view('messagebox')->with('tipo', 'alert alert-success')
-                ->with('titulo', 'RELATÓRIO MENSAL')
-                ->with('msg', $msg)
-                ->with('acao', "/");
+        // return view('messagebox')->with('tipo', 'alert alert-success')
+        //         ->with('titulo', 'RELATÓRIO MENSAL')
+        //         ->with('msg', $msg)
+        //         ->with('acao', "/");
+    }
+
+    function post($titulo, $img1, $img2, $txt1, $txt2, $genero)
+    {
+		$dados = array('nome' => mb_strtoupper($_POST['nome_post'], 'UTF-8'));
+
+		// INICIALIZA/CONFIGURA CURL
+		$curl = curl_init("http://localhost/FrameworkSlim/slim/autenticar/rest.php");
+		// CONFIGURA AS OPÇÕES (parâmetros)
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($curl, CURLOPT_POST, 'POST');
+		curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($dados));
+		// INVOCA A URL DO WEBSERVICE
+		$curl_resposta = curl_exec($curl);
+		curl_close($curl);
+
+		return $curl_resposta;
     }
 }
