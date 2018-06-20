@@ -1,0 +1,19 @@
+div.row
+{
+    margin: 1%;
+}
+
+div.download
+{
+    margin-left: 72%;
+}
+
+a span
+{
+    margin-left: 1%;
+}
+
+a:hover
+{
+    cursor: pointer;
+}

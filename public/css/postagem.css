@@ -1,6 +1,15 @@
+#navegacao
+{
+    margin-bottom: -3%;
+}
+
+a:hover
+{
+    text-decoration: none;
+}
+
 nav.postagem
 {
-    margin-top: -3.3%;
     width: 102%;
     margin-left: -1%;
 }
@@ -42,4 +51,168 @@ span.time
 {
     font-size: 100%;
     margin-right: 0.5%;
+}
+
+div.post_content
+{
+    margin-left: 23%;
+    text-align: justify;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-size: 100%;
+}
+
+div.trending_row
+{
+    margin-left: 6%;
+}
+
+img.trending_img
+{
+    float: left;
+    width: 50%;
+    margin: 1%;
+}
+
+img.second_img
+{
+    width: 100%;
+}
+
+figcaption
+{
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-size: 90%;
+    margin: 1%;
+    text-align: center;
+}
+
+figcaption.veja_mais
+{
+    font-size: 100%;
+}
+
+h3.verMais_content
+{
+    margin-left: 47%;
+    margin-top: 4%;
+    margin-bottom: 2%;
+}
+
+div.verMais_content
+{
+    margin-left: 23%;
+    width: 108%;
+}
+
+div.veja_mais
+{
+    margin-right: 1%;
+}
+
+ul.comentarios
+{
+    margin-top: 4%;
+    margin-bottom: 1%;
+    color: #404040;
+    width: 13%;
+    font-weight: bold;
+    margin-left: 23%;
+    list-style-type: none;
+    font-size: 120%;
+    border-top: 3px solid #404040;
+}
+
+ul.comentarios p
+{
+    margin-top: 3%;
+    font-size: 90%;
+}
+
+div.comentarios
+{
+    width: 52%;
+    margin-left: 25%;
+    margin-bottom: 4%;
+}
+
+div.comentarios div.currentUser img
+{
+    width: 8%;
+    border-radius: 50%;
+}
+
+div.comentarios div.currentUser textarea
+{
+    width: 90%;
+    height: 100px;
+}
+
+div.comentarios div.currentUser button[type="submit"]
+{
+    float: right;
+    color: #66b3ff;
+    display: none;
+    border: none;
+    background-color: transparent;
+}
+
+div.comentarios img
+{
+    width: 5%;
+    float: left;
+    margin-right: 1%;
+    border-radius: 50%;
+}
+
+div.singleComentario
+{
+    margin-bottom: 1%;
+}
+
+div.comentariosEventos
+{
+    width: 100%;
+    margin-left: 5%;
+}
+
+div.comentariosEventos span
+{
+    margin: 0.5%;
+    color: #66b3ff;
+}
+
+div.comentariosEventos span:hover, div.comentarios div.currentUser submit:hover
+{
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+p.userName
+{
+    color: #404040;
+    font-weight: bold;
+}
+
+p.userName strong
+{
+    color: #56d556;
+    margin-right: 1%;
+}
+
+p.userComentario
+{
+    margin-left: 3%;
+    color: #404040;
+}
+
+div.replies
+{
+    margin-left: 8%;
+    margin-top: 1%;
+    display: none;
+}
+
+div.replies img
+{
+    width: 3%;
 }

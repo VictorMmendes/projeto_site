@@ -1,0 +1,79 @@
+insert into postagem_models(titulo, img1, img2, txt1, txt2, produto_rel_url, publish_date, genero)
+values ('Watch Dogs 2',
+	'https://www.papeldeparede.etc.br/fotos/wp-content/uploads/aiden_pearce-HD.jpg',
+    '', '','','', current_timestamp(), 'Estratégia');
+
+insert into postagem_models(titulo, img1, img2, txt1, txt2, produto_rel_url, publish_date, genero)
+values ('Battlefield 4',
+	'https://images-na.ssl-images-amazon.com/images/I/81U94fQgcBL._SL1500_.jpg',
+    '', '','','', current_timestamp(), 'Ação');
+
+insert into postagem_models(titulo, img1, img2, txt1, txt2, produto_rel_url, publish_date, genero)
+values ('God of War 4',
+	'https://i.pinimg.com/originals/93/17/66/93176651970ae18d05d91ed02c115216.jpg',
+    '', '','','', current_timestamp(), 'Mitologia');
+
+insert into postagem_models(titulo, img1, img2, txt1, txt2, produto_rel_url, publish_date, genero)
+values ('Need for speed payback news',
+	'https://stmed.net/sites/default/files/need-for-speed-wallpapers-29761-9462352.jpg',
+    '', '','','', current_timestamp(), 'Corrida');
+
+insert into postagem_models(titulo, img1, img2, txt1, txt2, produto_rel_url, publish_date, genero)
+values ('Igra for Honor',
+	'https://i1.wp.com/www.tehix.org/wp-content/uploads/2018/04/Igra-For-Honor-%C4%87e-biti-besplatna-idu%C4%87i-tjedan-Tehix.jpg?fit=1920%2C1080&ssl=1',
+    '', '','','', current_timestamp(), 'Estratégia');
+
+insert into postagem_models(titulo, img1, img2, txt1, txt2, produto_rel_url, publish_date, genero)
+values ('Assassins Creed IV',
+	'http://www.zastavki.com/pictures/originals/2013/_Assassin_s_creed_IV_the_game_for_PS4_044481_.jpg',
+    '', '','','', current_timestamp(), 'Estratégia');
+
+insert into postagem_models(titulo, img1, img2, txt1, txt2, produto_rel_url, publish_date, genero)
+values ('Batman: Arkham Knight',
+	'https://www.ps4source.de/wp-content/uploads/Batman_Arkham_Knight_Sshot056_announce.jpg',
+    '', '','','', current_timestamp(), 'Ação');
+
+insert into postagem_models(titulo, img1, img2, txt1, txt2, produto_rel_url, publish_date, genero)
+values ('Second Son',
+	'http://maxpic.ir/wp-content/uploads/2017/02/WDF_2092504.jpg',
+    '', '','','', current_timestamp(), 'Ação');
+
+insert into postagem_models(titulo, img1, img2, txt1, txt2, produto_rel_url, publish_date, genero)
+values ('The Thief',
+	'https://bgwall.net/wp-content/uploads/2014/02/download-thief-ps4-game-wallpaper-high-resolution-full-size.jpg',
+    '', '','','', current_timestamp(), 'Estratégia');
+
+insert into postagem_models(titulo, img1, img2, txt1, txt2, produto_rel_url, publish_date, genero)
+values ('Godfire: Risa of Prometheus',
+	'https://www.newhdwallpapers.in/wp-content/uploads/2013/01/Godfire-Rise-of-Prometheus-PS4-Game-Wallpaper.jpg',
+    '', '','','', current_timestamp(), 'Ação');
+
+insert into postagem_models(titulo, img1, img2, txt1, txt2, produto_rel_url, publish_date, genero)
+values ('Hellblade',
+	'http://hdwallpaperg.com/wp-content/uploads/2015/02/235772.jpg',
+    '', '','','', current_timestamp(), 'Ação');
+
+insert into postagem_models(titulo, img1, img2, txt1, txt2, produto_rel_url, publish_date, genero)
+values ('The division - Fire war no end',
+	'https://jovemnerd.com.br/wp-content/uploads/2018/02/the-division-760x428.jpg',
+    '', '','','', current_timestamp(), 'Ação');
+
+insert into postagem_models(titulo, img1, img2, txt1, txt2, produto_rel_url, publish_date, genero)
+values ('The Prince Of Persia',
+	'http://gipsypixel.com/wp-content/uploads/2017/11/Prince-Of-Persia-Prodigy-Game-Hd-Desktop-Wallpaper-For-Mobile-Phones-Full-Pics.jpg',
+    '', '','','', current_timestamp(), 'Mitologia');
+
+insert into postagem_models(titulo, img1, img2, txt1, txt2, produto_rel_url, publish_date, genero)
+values ('Far Cry Primal',
+	'http://www.brashgames.co.uk/wp-content/uploads/2016/02/Far-Cry-Primal-PS4-Game-Review-Screenshot-1.jpg',
+    '', '','','', current_timestamp(), 'Estratégia');
+
+insert into postagem_models(titulo, img1, img2, txt1, txt2, produto_rel_url, publish_date, genero)
+values ('Grand Theft Auto V',
+	'https://assets.vice.com/content-images/contentimage/190345/Screen-Shot-2014-10-07-at-18-12-55.jpg',
+    '', '','','', current_timestamp(), 'Ação');
+
+insert into postagem_models(titulo, img1, img2, txt1, txt2, produto_rel_url, publish_date, genero)
+values ('Darksiders II',
+	'https://wallscover.com/images/darksiders-ii-wallpaper-16.jpg',
+    '', '','','', current_timestamp(), 'Estratégia');  

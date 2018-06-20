@@ -1,0 +1,24 @@
+@titulo
+/*
+    escreva aqui o titulo
+*/
+@img1
+/*
+    digite aqui o link da 1ªimagem
+*/
+@img2
+/*
+    digite aqui o link da 2ªimagem
+*/
+@txt1
+/*
+    digite aqui o 1ºtexto
+*/
+@txt2
+/*
+    digite aqui o 2ºtexto
+*/
+@genero
+/*
+    descreva aqui o genero do jogo
+*/

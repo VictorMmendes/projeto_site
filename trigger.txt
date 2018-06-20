@@ -1,0 +1,29 @@
+DELIMITER $$
+    CREATE TRIGGER comentarioDate
+    BEFORE INSERT ON comentario_models
+    FOR EACH ROW BEGIN
+
+		set NEW.publish_date = now();
+
+	END$$
+DELIMITER ;
+
+DELIMITER $$
+    CREATE TRIGGER replyDate
+    BEFORE INSERT ON reply_models
+    FOR EACH ROW BEGIN
+
+		set NEW.publish_date = now();
+
+	END$$
+DELIMITER ;
+
+DELIMITER $$
+    CREATE TRIGGER postagemDate
+    BEFORE INSERT ON postagem_models
+    FOR EACH ROW BEGIN
+
+		set NEW.publish_date = now();
+
+	END$$
+DELIMITER ;

@@ -13,6 +13,9 @@
 
 Route::get('/', 'PostagemController@listar');
 Route::get('/postagem/{id}', 'PostagemController@showPostagem');
+Route::post('/postagem/addComment/{id}', 'PostagemController@addComment')->middleware('auth');
+Route::get('/newPost', 'PostagemController@showNewPostForm')->middleware('auth');
+Route::post('/newPost/createPost', 'PostagemController@createPost')->middleware('auth');
 
 Auth::routes();
 
