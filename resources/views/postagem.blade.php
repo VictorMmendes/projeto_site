@@ -51,19 +51,41 @@
 @section('conteudo')
 <div class="row">
         <div class="post_content col-sm-4">
-            <?= nl2br($descr) ?>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            <br><br>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            <br><br>
+            <?php
+                $strlen = strlen($postagem->txt1);
+                $tag = 0;
+                for($i = 0; $i <= $strlen; $i++)
+                {
+                    $char = substr($postagem->txt1, $i, 1);
+                    echo $char;
+                    if($char == ".") $tag++;
+                    if($tag == 4)
+                    {
+                        echo "<br><br>";
+                        $tag = 0;
+                    }
+                }
+            ?>
             <figure>
-                <img class="second_img" src="https://www.rockstargames.com/rockstar_games/games/img/screens/241-3.jpg">
+                <img class="second_img" src="{{ $postagem->img2 }}">
                 <figcaption>Fig.1 - Descricao descricao descricao.</figcaption>
             </figure>
-            <br><br>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            <br><br>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            <br>
+            <?php
+                $strlen = strlen($postagem->txt2);
+                $tag = 0;
+                for($i = 0; $i <= $strlen; $i++)
+                {
+                    $char = substr($postagem->txt2, $i, 1);
+                    echo $char;
+                    if($char == ".") $tag++;
+                    if($tag == 4)
+                    {
+                        echo "<br><br>";
+                        $tag = 0;
+                    }
+                }
+            ?>
         </div>
         <div class="col-sm-2 trending_row">
             <h3>Recentes</h3>

@@ -19,6 +19,7 @@ class PostagemController extends Controller
     {
         $postagem = PostagemModel::find($id);
         $comentarios = ComentarioModel::where('postagem_model_id', $id)->get();
+        $replies = array();
 
         foreach ($comentarios as $comentario)
         {
@@ -149,24 +150,25 @@ class PostagemController extends Controller
             }
         }
 
-        echo $this->post($titulo, $img1, $img2, $txt1, $txt2, $genero);
+        $this->post($titulo, $img1, $img2, $txt1, $txt2, $genero);
 
-        // foreach ($checks as $ck)
-        // {
-        //     // Envia e-mail com a senha para os gênios importados do .txt
-        //     $dados_mail = array();
-        //     $email = mb_strtolower($ck, 'UTF-8');
-        //     \Mail::to($email)->send( new Mailing("mailImport", $dados, $titulo) );
-        //     sleep(1);
-        // }
+        $titulo = "TecGames - Explore os universos";
+        $dados['postagem'] = $img1;
+        $dados['titulo'] = $titulo;
+        $user = User::all();
+        foreach ($checks as $ck)
+        {
+            $email = mb_strtolower($ck, 'UTF-8');
+            \Mail::to($email)->send( new Mailing("mailImport", $dados, $titulo) );
+            sleep(1);
+        }
 
-        // Importação Finalizada com Sucesso
-        // $msg = "E-mails enviados com sucesso";
+        $msg = "Postagem realizada com sucesso";
 
-        // return view('messagebox')->with('tipo', 'alert alert-success')
-        //         ->with('titulo', 'RELATÓRIO MENSAL')
-        //         ->with('msg', $msg)
-        //         ->with('acao', "/");
+        return view('messagebox')->with('tipo', 'alert alert-success')
+                ->with('titulo', 'Postagem Via WebService')
+                ->with('msg', $msg)
+                ->with('acao', "/");
     }
 
     function post($titulo, $img1, $img2, $txt1, $txt2, $genero)
