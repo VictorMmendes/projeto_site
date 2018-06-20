@@ -154,12 +154,7 @@ class PostagemController extends Controller
             }
         }
 
-        echo $titulo . "\n";
-        echo $img1 . "\n";
-        echo $img2 . "\n";
-        echo $txt1 . "\n";
-        echo $txt2 . "\n";
-        echo $genero . "\n";
+        echo $this->post($titulo, $img1, $img2, $txt1, $txt2, $genero);
 
         // foreach ($checks as $ck)
         // {
@@ -181,18 +176,29 @@ class PostagemController extends Controller
 
     function post($titulo, $img1, $img2, $txt1, $txt2, $genero)
     {
-		$dados = array('nome' => mb_strtoupper($_POST['nome_post'], 'UTF-8'));
+		$dados = array(
+                'titulo' => $titulo,
+                'img1' => $img1,
+                'img2' => $img2,
+                'txt1' => $txt1,
+                'txt2' => $txt2,
+                'genero' => $genero,
+            );
 
-		// INICIALIZA/CONFIGURA CURL
-		$curl = curl_init("http://localhost/FrameworkSlim/slim/autenticar/rest.php");
-		// CONFIGURA AS OPÇÕES (parâmetros)
-		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($curl, CURLOPT_POST, 'POST');
-		curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($dados));
-		// INVOCA A URL DO WEBSERVICE
-		$curl_resposta = curl_exec($curl);
-		curl_close($curl);
-
-		return $curl_resposta;
+        foreach ($dados as $key => $value)
+        {
+            echo $value;
+        }
+		// // INICIALIZA/CONFIGURA CURL
+		// $curl = curl_init("http://localhost/FrameworkSlim/slim/autenticar/rest.php");
+		// // CONFIGURA AS OPÇÕES (parâmetros)
+		// curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		// curl_setopt($curl, CURLOPT_POST, 'POST');
+		// curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($dados));
+		// // INVOCA A URL DO WEBSERVICE
+		// $curl_resposta = curl_exec($curl);
+		// curl_close($curl);
+        //
+		// return $curl_resposta;
     }
 }
