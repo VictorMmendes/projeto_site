@@ -24,10 +24,13 @@ class PostagemController extends Controller
         {
             $comentario->userName = User::find($comentario->user_model_id)->name;
             $replies[$comentario->id] = ReplyModel::where('comentario_model_id', $comentario->id)->get();
+            $count = 0;
             foreach ($replies[$comentario->id] as $reply)
             {
                 $reply->userName = User::find($reply->user_model_id)->name;
+                $count++;
             }
+            $comentario->repliesCount = $count;
         }
         $trendings = PostagemModel::orderBy('publish_date', 'DESC')->where('id', '!=', $id)->limit(14)->get();
         return view('postagem')->with('postagem', $postagem)->with('trendings', $trendings)
@@ -71,82 +74,74 @@ class PostagemController extends Controller
 
         if ($fp != false)
         {
-            $titulo = "";
-            $img1 = "";
-            $img2 = "";
-            $txt1 = "";
-            $txt2 = "";
-            // $produto_rel_url = "";
-            $genero = "";
-
             while(!feof($fp))
             {
-                $linha = utf8_decode(fgets($fp));
+                $linha = fgets($fp);
 
                 if(!empty($linha))
                 {
                     if($linha == "@titulo\n")
                     {
-                        $linha = utf8_decode(fgets($fp));
+                        $linha = fgets($fp);
                         while($linha[0] != "@")
                         {
-                            $titulo .= $linha;
-                            $linha = utf8_decode(fgets($fp));
+                            $titulo[] = $linha;
+                            $linha = fgets($fp);
                             if(empty($linha)) break;
                         }
                     }
 
                     if($linha == "@img1\n")
                     {
-                        $linha = utf8_decode(fgets($fp));
+                        $linha = fgets($fp);
                         while($linha[0] != "@")
                         {
-                            $img1 .= $linha;
-                            $linha = utf8_decode(fgets($fp));
+                            $img1[] = $linha;
+                            $linha = fgets($fp);
                             if(empty($linha)) break;
                         }
                     }
 
                     if($linha == "@img2\n")
                     {
-                        $linha = utf8_decode(fgets($fp));
+                        $linha = fgets($fp);
                         while($linha[0] != "@")
                         {
-                            $img2 .= $linha;
-                            $linha = utf8_decode(fgets($fp));
+                            $img2[] = $linha;
+                            $linha = fgets($fp);
                             if(empty($linha)) break;
                         }
                     }
 
                     if($linha == "@txt1\n")
                     {
-                        $linha = utf8_decode(fgets($fp));
+                        $linha = fgets($fp);
                         while($linha[0] != "@")
                         {
-                            $txt1 .= $linha;
-                            $linha = utf8_decode(fgets($fp));
+                            $txt1[] = $linha;
+                            $linha = fgets($fp);
                             if(empty($linha)) break;
                         }
                     }
 
                     if($linha == "@txt2\n")
                     {
-                        $linha = utf8_decode(fgets($fp));
+                        $linha = fgets($fp);
                         while($linha[0] != "@")
                         {
-                            $txt2 .= $linha;
-                            $linha = utf8_decode(fgets($fp));
+                            $txt2[] = $linha;
+                            $linha = fgets($fp);
                             if(empty($linha)) break;
                         }
                     }
 
                     if($linha == "@genero\n")
                     {
-                        $linha = utf8_decode(fgets($fp));
+                        $linha = fgets($fp);
                         while($linha[0] != "@")
                         {
-                            $genero .= $linha;
-                            $linha = utf8_decode(fgets($fp));
+                            $genero[] = $linha;
+                            $linha = fgets($fp);
                             if(empty($linha)) break;
                         }
                     }
@@ -176,29 +171,26 @@ class PostagemController extends Controller
 
     function post($titulo, $img1, $img2, $txt1, $txt2, $genero)
     {
-		$dados = array(
-                'titulo' => $titulo,
-                'img1' => $img1,
-                'img2' => $img2,
-                'txt1' => $txt1,
-                'txt2' => $txt2,
-                'genero' => $genero,
-            );
+        $dados = array(
+            'titulo' => array($titulo),
+            'img1' => array($img1),
+            'img2' => array($img2),
+            'txt1' => array($txt1),
+            'txt2' => array($txt2),
+            'genero' => array($genero)
+        );
+        $encDados = json_encode($dados);
 
-        foreach ($dados as $key => $value)
-        {
-            echo $value;
-        }
-		// // INICIALIZA/CONFIGURA CURL
-		// $curl = curl_init("http://localhost/FrameworkSlim/slim/autenticar/rest.php");
-		// // CONFIGURA AS OPÇÕES (parâmetros)
-		// curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-		// curl_setopt($curl, CURLOPT_POST, 'POST');
-		// curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($dados));
-		// // INVOCA A URL DO WEBSERVICE
-		// $curl_resposta = curl_exec($curl);
-		// curl_close($curl);
-        //
-		// return $curl_resposta;
+		// INICIALIZA/CONFIGURA CURL
+		$curl = curl_init("http://localhost/FrameworkSlim/slim/autenticar/rest.php");
+		// CONFIGURA AS OPÇÕES (parâmetros)
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($curl, CURLOPT_POST, 'POST');
+		curl_setopt($curl, CURLOPT_POSTFIELDS, $encDados);
+		// INVOCA A URL DO WEBSERVICE
+		$curl_resposta = curl_exec($curl);
+		curl_close($curl);
+
+		return $curl_resposta;
     }
 }

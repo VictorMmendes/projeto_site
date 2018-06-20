@@ -131,8 +131,14 @@
                   <p class="userName"><strong>{{ $comentario->userName }}</strong>&bull; {{ $comentario->publish_date }}</p>
                   <p class="userComentario">{{ $comentario->conteudo }}</p>
                   <div class="comentariosEventos">
+                      @if($comentario->repliesCount > 0)
+                      <span>{{ $comentario->repliesCount }}</span>
                       <span id="span_{{ $comentario->id }}" class="glyphicon glyphicon-chevron-up" onclick="showReply({{ $comentario->id }})"></span>
                       <span class="glyphicon glyphicon-edit" onclick="showReply({{ $comentario->id }})"></span>
+                      @else
+                      <span class="glyphicon glyphicon-chevron-up"></span>
+                      <span class="glyphicon glyphicon-edit" onclick="showReply({{ $comentario->id }})"></span>
+                      @endif
                       <span class="glyphicon glyphicon-share-alt"></span>
                   </div>
 
