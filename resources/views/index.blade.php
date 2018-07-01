@@ -106,7 +106,7 @@
                   <a href="{{ action('PostagemController@listar') }}"><p>Home</p></a>
               </li>
               <li>
-                  <a href="#"><p>Trending</p></a>
+                  <a href="/trending"><p>Trending</p></a>
               </li>
               <li id="purple">
                   <a href="#"><p>TecShopping</p></a>

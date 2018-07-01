@@ -17,6 +17,7 @@ Route::post('/postagem/addComment/{id}', 'PostagemController@addComment')->middl
 Route::post('/postagem/addReply/{id}', 'PostagemController@addReply')->middleware('auth');
 Route::get('/newPost', 'PostagemController@showNewPostForm')->middleware('auth');
 Route::post('/newPost/createPost', 'PostagemController@createPost')->middleware('auth');
+Route::get('/trending', 'PostagemController@trending')->middleware('auth');
 
 Auth::routes();
 

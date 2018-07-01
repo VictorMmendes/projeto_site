@@ -175,6 +175,15 @@ class PostagemController extends Controller
             }
         }
 
+        if (empty($titulo) || empty($img1) || empty($img2) || empty($txt1) || empty($txt2) || empty($genero)) {
+            $msg = "Não foi possível encontrar alguns dados no arquivo, baixe o modelo!";
+
+            return view('messagebox')->with('tipo', 'alert alert-danger')
+                    ->with('titulo', 'MODELO DE ARQUIVO INCORRETO')
+                    ->with('msg', $msg)
+                    ->with('acao', "/newPost");
+        }
+
         $this->post($titulo, $img1, $img2, $txt1, $txt2, $genero);
 
         $user = User::all();
@@ -216,5 +225,10 @@ class PostagemController extends Controller
 		curl_close($curl);
 
 		return $curl_resposta;
+    }
+
+    function trending()
+    {
+        return view('trending');
     }
 }
