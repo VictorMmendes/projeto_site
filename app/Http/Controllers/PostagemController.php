@@ -2,9 +2,12 @@
 namespace App\Http\Controllers;
 use Request;
 use Auth;
+use DB;
+use Khill\Lavacharts\Lavacharts;
 use App\PostagemModel;
 use App\ComentarioModel;
 use App\ReplyModel;
+use App\VisitaModel;
 use App\User;
 use App\Mail;
 use App\Mail\Mailing;
@@ -22,6 +25,9 @@ class PostagemController extends Controller
     {
         $postagem = PostagemModel::find($id);
         $comentarios = ComentarioModel::where('postagem_model_id', $id)->get();
+        $visita = new VisitaModel();
+        $visita->postagem_model_id = $id;
+        $visita->save();
         $replies = array();
 
         foreach ($comentarios as $comentario)
@@ -229,6 +235,53 @@ class PostagemController extends Controller
 
     function trending()
     {
-        return view('trending');
+        $lava = new Lavacharts;
+        $postagens = $lava->DataTable();
+        $inicial = Request::input('inicial');
+        $final = Request::input('final');
+        $today = date('Y-m-d');
+
+        if(!empty($inicial) && !empty($final))
+        {
+            $visitas = DB::table('visita_models')
+            ->select('postagem_model_id', DB::raw('count(*) as qtdeVisitas'))
+            ->whereBetween('created_at', [$inicial, $final])
+            ->groupBy('postagem_model_id')
+            ->get();
+        } else {
+            $visitas = DB::table('visita_models')
+            ->select('postagem_model_id', DB::raw('count(*) as qtdeVisitas'))
+            ->groupBy('postagem_model_id')
+            ->get();
+        }
+
+        $postagens->addStringColumn('Postagens')
+            ->addNumberColumn('Visitas')
+            ->addNumberColumn('Comentários');
+
+        foreach ($visitas as $visita)
+        {
+            $count = 0;
+            $comentarios = ComentarioModel::where('postagem_model_id', '=', $visita->postagem_model_id)->get();
+            $titulo = PostagemModel::find($visita->postagem_model_id)->titulo;
+            foreach ($comentarios as $comentario) {
+                $count++;
+                $count += ReplyModel::where('comentario_model_id', '=', $comentario->id)->count();
+            }
+            $visita->comentarios = $count;
+            $postagens->addRow([$titulo, $visita->qtdeVisitas, $visita->comentarios]);
+        }
+
+        $lava->ColumnChart('Dados', $postagens, [
+            'title' => 'Visitas/Comentários',
+            'columnColor' => '#cccccc',
+            'titleTextStyle' => [
+                'color' => '#eb6b2c',
+                'fontSize' => 14
+            ]
+        ]);
+
+        return view('trending')->with(compact('lava'))
+            ->with('tipo', 'ColumnChart');
     }
 }

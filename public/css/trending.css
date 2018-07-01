@@ -1,0 +1,9 @@
+form
+{
+    padding: 1%;
+}
+
+input[type="date"]
+{
+    height: 35px;
+}
