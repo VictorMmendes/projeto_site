@@ -6,6 +6,9 @@ use App\PostagemModel;
 use App\ComentarioModel;
 use App\ReplyModel;
 use App\User;
+use App\Mail;
+use App\Mail\Mailing;
+use App\Mail\Warning;
 
 class PostagemController extends Controller
 {
@@ -45,6 +48,28 @@ class PostagemController extends Controller
         $comentario->postagem_model_id = $id;
         $comentario->user_model_id = Auth::user()->id;
         $comentario->save();
+
+        return $this->showPostagem($id);
+    }
+
+    function addReply($id)
+    {
+        $id_comentario = Request::input('comentario_id');
+        $reply = new ReplyModel();
+        $reply->conteudo = Request::input('reply');
+        $reply->comentario_model_id = $id_comentario;
+        $reply->user_model_id = Auth::user()->id;
+        $reply->save();
+
+        $comentario = ComentarioModel::find($id_comentario);
+        $user = User::find($comentario->user_model_id);
+        $postagem = PostagemModel::find($id);
+        $titulo = Auth::user()->name . " acabou de responder seu comentário! Clique aqui para ver";
+        $link = "http://localhost:8001/postagem/" . $id;
+
+        $email = mb_strtolower($user->email, 'UTF-8');
+        \Mail::to($email)->send(new Warning("warningMail", $postagem->img1, $titulo, $link));
+        sleep(1);
 
         return $this->showPostagem($id);
     }
@@ -152,14 +177,11 @@ class PostagemController extends Controller
 
         $this->post($titulo, $img1, $img2, $txt1, $txt2, $genero);
 
-        $titulo = "TecGames - Explore os universos";
-        $dados['postagem'] = $img1;
-        $dados['titulo'] = $titulo;
         $user = User::all();
-        foreach ($checks as $ck)
+        foreach ($user as $use)
         {
-            $email = mb_strtolower($ck, 'UTF-8');
-            \Mail::to($email)->send( new Mailing("mailImport", $dados, $titulo) );
+            $email = mb_strtolower($use->email, 'UTF-8');
+            \Mail::to($email)->send(new Mailing("mailImport", $img1, $titulo));
             sleep(1);
         }
 

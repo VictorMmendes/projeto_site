@@ -7,7 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class Mailing extends Mailable
+class Warning extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -16,11 +16,12 @@ class Mailing extends Mailable
      *
      * @return void
      */
-    public function __construct($view, $img, $titulo)
+    public function __construct($view, $img, $titulo, $link)
     {
         $this->view = $view;
         $this->img = $img;
         $this->titulo = $titulo;
+        $this->link = $link;
     }
 
     /**
@@ -34,6 +35,7 @@ class Mailing extends Mailable
         ->from("mv.sednemmrotciv@gmail.com", "TECGAMES")
         ->subject("TecMundo - Explore os universos")
         ->with('img', $this->img)
-        ->with('titulo', $this->titulo);
+        ->with('titulo', $this->titulo)
+        ->with('link', $this->link);
     }
 }

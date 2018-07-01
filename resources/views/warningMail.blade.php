@@ -6,9 +6,9 @@
     </head>
     <body>
 
-        <img src="{{ $img[0] }}">
-        <a href="http://localhost:8001">
-            <h3>{{ $titulo[0] }}</h3>
+        <img src="{{ $img }}">
+        <a href="{{ $link }}">
+            <h3>{{ $titulo }}</h3>
         </a>
         <br/>
 

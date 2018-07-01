@@ -31,6 +31,17 @@
                 document.getElementById("span_" + id).classList.add('glyphicon-chevron-up');
             }
         }
+
+        function checkText(id)
+        {
+            const count = $("#reply_" + id).val().length;
+            if(count > 0)
+            {
+                $("#submitReply_" + id).css("display", "block");
+            } else {
+                $("#submitReply_" + id).css("display", "none");
+            }
+        }
     </script>
 @stop
 
@@ -128,20 +139,24 @@
       <form method="POST" action="{{ action('PostagemController@addComment', ['id' => $postagem->id]) }}">
           <input type ="hidden" name="_token" value="{{{ csrf_token() }}}">
           <div class="row currentUser">
+              @if(Auth::check())
               <img src="https://image.freepik.com/free-photo/grunge-metal-plates-on-an-old-watercolour-background_1048-6388.jpg">
+              @endif
               <div class="singleComentario">
                   <p class="userName">
                       <strong>
                           @if(Auth::check())
                           {{ Auth::user()->name }}
                           @else
-                          Username
+                          Faça login para comentar
                           @endif
                       </strong>
                   </p>
                   <p class="currentUser">
+                  @if(Auth::check())
                       <textarea maxlength="250" placeholder="Deixe seu comentário..." name="comentario" id="comentario"></textarea>
                       <button type="submit" id="submitComentario"><span class="glyphicon glyphicon-ok"></span></button>
+                  @endif
                   </p>
               </div>
           </div>
@@ -155,12 +170,9 @@
                   <div class="comentariosEventos">
                       @if($comentario->repliesCount > 0)
                       <span>{{ $comentario->repliesCount }}</span>
+                      @endif
                       <span id="span_{{ $comentario->id }}" class="glyphicon glyphicon-chevron-up" onclick="showReply({{ $comentario->id }})"></span>
                       <span class="glyphicon glyphicon-edit" onclick="showReply({{ $comentario->id }})"></span>
-                      @else
-                      <span class="glyphicon glyphicon-chevron-up"></span>
-                      <span class="glyphicon glyphicon-edit" onclick="showReply({{ $comentario->id }})"></span>
-                      @endif
                       <span class="glyphicon glyphicon-share-alt"></span>
                   </div>
 
@@ -170,6 +182,26 @@
                       <p class="userName"><strong>{{ $reply->userName }}</strong>&bull; {{ $reply->publish_date }}</p>
                       <p class="userComentario">{{ $reply->conteudo }}</p>
                   @endforeach
+                  @if(Auth::check())
+                      <form method="POST" action="{{ action('PostagemController@addReply', ['id' => $postagem->id]) }}">
+                          <input type ="hidden" name="_token" value="{{{ csrf_token() }}}">
+                          <input type ="hidden" name="comentario_id" value="{{ $comentario->id }}">
+                          <div class="row currentUser">
+                              <img src="https://image.freepik.com/free-photo/grunge-metal-plates-on-an-old-watercolour-background_1048-6388.jpg">
+                              <div class="singleComentario">
+                                  <p class="userName">
+                                      <strong>
+                                          {{ Auth::user()->name }}
+                                      </strong>
+                                  </p>
+                                  <p class="currentUser">
+                                      <textarea maxlength="250" placeholder="Responder comentário..." id="reply_{{ $comentario->id }}" name="reply" onkeyup="checkText({{ $comentario->id }})"></textarea>
+                                      <button type="submit" id="submitReply_{{ $comentario->id }}"><span class="glyphicon glyphicon-ok"></span></button>
+                                  </p>
+                              </div>
+                          </div>
+                      </form>
+                  @endif
                   </div>
               </div>
           </div>
